@@ -1,0 +1,13 @@
+<?php
+
+class ServiceType extends Eloquent {
+	/**
+	* Identify relation between ServiceType and Service
+	*/
+	public function service() {
+        # ServiceType has many Service
+        # Define a one-to-many relationship.
+        return $this->hasMany('Service');
+        }
+}
+    

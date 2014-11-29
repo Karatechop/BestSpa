@@ -1,0 +1,15 @@
+<?php
+
+class Service extends Eloquent { 
+
+    public function service() {
+        # Service belongs to Salon
+        # Service belongs to ServiceSort
+        # Service belongs to ServiceType
+ 
+        # Define inverse one-to-many relationships.
+        return $this->belongsTo('Salon') 
+        	->belongsTo('ServiceSort') 
+        	->belongsTo('ServiceType');
+    }
+}
