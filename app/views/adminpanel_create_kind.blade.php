@@ -9,18 +9,7 @@
 <div class="row">
         <div class="col-lg-6">
              
-        @if(Session::get('flash_message'))
-       	
-        <div class="alert {{ Session::get('alert_class', 'alert-info') }}">
-       	{{ Session::get('flash_message') }}
-	<br>
-	
-	@foreach($errors->all() as $message) 
-	<li>{{ $message }}</li>
-	
-	@endforeach
-	</div>
-	@endif
+@include ('flash_message')
         
             <div class="panel panel-primary">
             	<div class="panel-heading">
@@ -40,8 +29,7 @@
 
 
 {{Former::text('name',"Enter new service kind")
-  ->class('col-lg-12')
-  ->required(); 
+  ->class('col-lg-12'); 
 }}
 
 <br>

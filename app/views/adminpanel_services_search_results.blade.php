@@ -4,9 +4,9 @@
 
 @include ('adminpanel_services_navbar')
 
-<h2>Services</h2>
+@include ('flash_message')
 
-<a href="/adminpanel/services/create" class="btn btn-primary">Add a new service</a>
+<h2>Services</h2>
 
 @if($query)
 		<h2>You searched for: {{{ $query }}}</h2>
@@ -18,9 +18,9 @@
 
 
 @foreach ($service_results as $service)
-@foreach ($service->salon as $salon)
+
 @include ('services_table')<br><br>
-@endforeach
+
 @endforeach
 
 @endif

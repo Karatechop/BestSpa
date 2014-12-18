@@ -4,6 +4,8 @@
 
 @include ('adminpanel_kinds_navbar')
 
+@include ('flash_message')
+
 <h1>Search results</h1>
 
 @if($query)

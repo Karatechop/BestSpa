@@ -9,40 +9,27 @@
 <div class="row">
         <div class="col-lg-6">
              
-        @if(Session::get('flash_message'))
-       	
-        <div class="alert {{ Session::get('alert_class', 'alert-info') }}">
-       	{{ Session::get('flash_message') }}
-	<br>
-	
-	@if(isset($errors))
-	@foreach($errors->all() as $message) 
-	{{ $message }}
-	@endforeach
-	@endif
-	
-	</div>
-	@endif
-        
-            <div class="panel panel-primary">
-            	<div class="panel-heading">
-            	   <h3 class="panel-title">Add a new service</h3>
-  </div>
-  <div class="panel-body">
+@include ('flash_message')
+	      
+        <div class="panel panel-primary">
+        <div class="panel-heading">
+        	<h3 class="panel-title">Add a new service</h3>
+        </div>
+        <div class="panel-body">
 
 
-<h5>Remember to add any new salons, service kinds and durations this new service might require before submitting this form</h5>
+<h5>Remember to add any new salons, service kinds and types this new service might require before submitting this form</h5>
 
 {{Former::horizontal_open()
   ->id('ServiceCreateForm')
   ->url('adminpanel/services/create')
   ->rules(array( 
   	  'kind_id' => 'required',
-  	  'type' => 'required',
-  	  'duration_id' => 'required',
+  	  'type_id' => 'required',
+  	  'duration' => 'required|numeric|between:0,1440',
   	  'part' => 'required',
   	  'descrition' => 'max:300',
-  	  'salons[]' => 'required',
+  	  'salon_id' => 'required',
   	  ))
   ->method('POST') 
 }}
@@ -52,15 +39,12 @@
   ->required();
 }}
 
-{{Former::select('type',"Select service type")->options(
-		["turkish" => "turkish", 
-		"finnish" => "finnish", 
-		"russian banya" => "russian banya"])
+{{Former::select('type_id',"Select service type")->options($types)
   ->class('col-lg-12')
   ->required();
 }}
 
-{{Former::select('duration_id',"Select service duration")->options($durations)
+{{Former::number('duration',"Enter service duration in minutes")
   ->class('col-lg-12')
   ->required();
 }}
@@ -81,9 +65,10 @@ Former::textarea('description', "Describe this service. (max 300 characters)")
    ->state('error');
 }}
 
-@foreach($salons as $id => $salon)
-{{ Form::checkbox('salons[]', $id); }} {{ $salon }}
-@endforeach
+{{Former::select('salon_id',"Select salon that provides this service")->options($salons)
+  ->class('col-lg-12')
+  ->required();
+}}
 <br>
 <br>		
 
@@ -94,11 +79,12 @@ Former::textarea('description', "Describe this service. (max 300 characters)")
 
 
 {{Former::close()}}
-</div>
 
-</div>
-
-</div>
+	</div>
+	
+	</div>
+	
+	</div>
 
 </div>
 

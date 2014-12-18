@@ -2,7 +2,9 @@
 
 @section('content')
 
-@include ('adminpanel_durations_navbar')
+@include ('adminpanel_types_navbar')
+
+@include ('flash_message')
 
 <h1>Search results</h1>
 
@@ -10,15 +12,15 @@
 		<h2>You searched for: {{{ $query }}}</h2>
 	@endif
 
-	@if(sizeof($duration_results) == 0)
+	@if(sizeof($type_results) == 0)
 		No results
 	@else
 
 {{ "<strong> Your results: </strong>" }} <br>
 
-@foreach ($duration_results as $duration)
+@foreach ($type_results as $type)
 
-@include ('durations_table')
+@include ('types_table')
 
 @endforeach
 

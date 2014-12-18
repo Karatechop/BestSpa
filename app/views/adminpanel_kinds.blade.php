@@ -6,6 +6,7 @@
 
 @include ('adminpanel_kinds_navbar')
 
+@include ('flash_message')
 
 <h2>Kinds</h2>
 

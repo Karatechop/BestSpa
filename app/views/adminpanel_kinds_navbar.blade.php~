@@ -12,15 +12,15 @@
     
     <ul class="nav navbar-nav">
     <li><a href="/">Go to index page</a></li>  
-    <li class="active"><a href="/adminpanel">Services</a></li>
+    <li><a href="/adminpanel">Services</a></li>
     <li><a href="/adminpanel/salons">Salons</a></li>
-    <li><a href="/adminpanel/kinds">Kinds</a></li>
+    <li class="active"><a href="/adminpanel/kinds">Kinds</a></li>
     <li><a href="/adminpanel/durations">Durations</a></li>
     </ul>
     
-    	{{ Form::open(array('class'=> 'navbar-form navbar-left', 'url' => '/adminpanel/services/search', 'method' => 'GET')) }}
+    	{{ Form::open(array('class'=> 'navbar-form navbar-left', 'url' => '/adminpanel/kinds/search', 'method' => 'GET')) }}
 		
-		{{ Form::text('query', 'Look for services', array('class'=>'form-control col-lg-8')) }} 
+		{{ Form::text('query', 'Look for service kinds', array('class'=>'form-control col-lg-8')) }} 
 
 		{{ Form::submit('Search', array('class'=> 'form-control col-lg-8')); }} 
 	

@@ -9,10 +9,12 @@
 
 <h2>Kinds</h2>
 
+<a href="/adminpanel/kinds/create" class="btn btn-primary">Add a new service kind</a>
+<br>
 
 {{ "<strong> All service kinds: </strong>" }} <br>
 @foreach ($kinds as $kind)
-{{$kind->name}}	created at:{{$kind->created_at}}	updated at:{{$kind->updated_at}}<br>
+@include ('kinds_table')
 @endforeach
 
 

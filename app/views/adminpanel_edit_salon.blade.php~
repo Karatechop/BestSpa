@@ -31,9 +31,26 @@
 
 <h5>Genaral details</h5>
 
+{{Former::horizontal_open()
+  ->id('SalonEditForm')
+  ->url('adminpanel/salons/edit')
+  ->rules(array( 
+  	  'name' => 'required|max:20',
+  	  'city' => 'required|max:20',
+  	  'address' => 'required|max:50',
+  	  'open_h' => 'required|numeric|between:0,24',
+  	  'open_m' => 'required|numeric|between:0,59',
+  	  'close_h' => 'required|numeric|between:0,24',
+  	  'close_m' => 'required|numeric|between:0,59',
+  	  'int_code' => 'required|max:2',
+  	  'coun_code' => 'required|between:0,9999',
+  	  'net_code' => 'required|between:0,999',
+  	  'phone' => 'required|max:9999999999',
+  	  'url' => 'url',
+  	  ))
+  ->method('POST') 
+}}
 
-
-{{Form::open(['method' => 'put', 'action' => ['SalonController@postAdminPanelEditSalon', $salon->id]]) }}
 
 {{Former::populate($salon)}}
 

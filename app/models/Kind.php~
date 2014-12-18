@@ -1,6 +1,10 @@
 <?php
 
 class Kind extends Eloquent {
+	
+	protected $fillable = array('name');
+
+	
 	/**
 	* Identify relation between Kind and Service
 	*/

@@ -20,6 +20,8 @@ Route::get('/adminpanel/services/create', 'ServiceController@getAdminPanelCreate
 Route::post('/adminpanel/services/create', 'ServiceController@postAdminPanelCreateService');
 Route::get('/adminpanel/services/edit/{id}', 'ServiceController@getAdminPanelEditService');
 Route::post('/adminpanel/services/edit/{id}', 'ServiceController@postAdminPanelEditService');
+Route::get('/adminpanel/services/delete/{id}', 'ServiceController@getAdminPanelDeleteService');
+Route::delete('/adminpanel/services/delete{id}', 'ServiceController@postAdminPanelDeleteService');
 
 #Salons
 Route::get('/adminpanel/salons', 'SalonController@adminPanelSalons');
@@ -28,19 +30,28 @@ Route::get('/adminpanel/salons/create', 'SalonController@getAdminPanelCreateSalo
 Route::post('/adminpanel/salons/create', 'SalonController@postAdminPanelCreateSalon');
 Route::get('/adminpanel/salons/edit/{id}', 'SalonController@getAdminPanelEditSalon');
 Route::post('/adminpanel/salons/edit/{id}', 'SalonController@postAdminPanelEditSalon');
+Route::get('/adminpanel/salons/delete/{id}', 'SalonController@getAdminPanelDeleteSalon');
+Route::delete('/adminpanel/salons/delete{id}', 'SalonController@postAdminPanelDeleteSalon');
 
 #Kinds
 Route::get('/adminpanel/kinds', 'KindController@adminPanelKinds');
 Route::get('/adminpanel/kinds/search', 'KindController@adminPanelSearchKindResults');
 Route::get('/adminpanel/kinds/create', 'KindController@getAdminPanelCreateKind');
 Route::post('/adminpanel/kinds/create', 'KindController@postAdminPanelCreateKind');
+Route::get('/adminpanel/kinds/edit/{id}', 'KindController@getAdminPanelEditKind');
+Route::post('/adminpanel/kinds/edit/{id}', 'KindController@postAdminPanelEditKind');
+Route::get('/adminpanel/kinds/delete/{id}', 'KindController@getAdminPanelDeleteKind');
+Route::delete('/adminpanel/kinds/delete{id}', 'KindController@postAdminPanelDeleteKind');
 
-#Durations
-Route::get('/adminpanel/durations', 'DurationController@adminPanelDurations');
-Route::get('/adminpanel/durations/search', 'DurationController@adminPanelSearchDurationResults');
-Route::get('/adminpanel/durations/create', 'DurationController@getAdminPanelCreateDuration');
-Route::post('/adminpanel/durations/create', 'DurationController@postAdminPanelCreateDuration');
-
+#Types
+Route::get('/adminpanel/types', 'TypeController@adminPanelTypes');
+Route::get('/adminpanel/types/search', 'TypeController@adminPanelSearchTypeResults');
+Route::get('/adminpanel/types/create', 'TypeController@getAdminPanelCreateType');
+Route::post('/adminpanel/types/create', 'TypeController@postAdminPanelCreateType');
+Route::get('/adminpanel/types/edit/{id}', 'TypeController@getAdminPanelEditType');
+Route::post('/adminpanel/types/edit/{id}', 'TypeController@postAdminPanelEditType');
+Route::get('/adminpanel/types/delete/{id}', 'TypeController@getAdminPanelDeleteType');
+Route::delete('/adminpanel/types/delete{id}', 'TypeController@postAdminPanelDeleteType');
 
 
 
@@ -190,21 +201,27 @@ Route::get('/seed-all-tables', function() {
         		);
         	
         	
-        	#Durations
+        	#Types
         
-        	DB::table('durations')->delete();
+        	DB::table('types')->delete();
         	
-        	$fifteen = new Duration;
-        	$fifteen-> duration = "15";
-		$fifteen->save();
+        	$swedish = Type::create(array(
+        		'name' => "swedish"));
 		
-		$thirty = new Duration;
-        	$thirty-> duration = "30";
-		$thirty->save();
+		$finnish = Type::create(array(
+        		'name' => "finnish"));
 		
-		$fourtyfive = new Duration;
-        	$fourtyfive-> duration = "45";
-		$fourtyfive->save();
+		$turkish = Type::create(array(
+        		'name' => "turkish"));
+        	
+        	$therapeutical = Type::create(array(
+        		'name' => "therapeutical"));
+        	
+        	$russian = Type::create(array(
+        		'name' => "russian"));
+        	
+        	$sport = Type::create(array(
+        		'name' => "sport"));
         		
         	        	
         	#Kinds
@@ -222,64 +239,69 @@ Route::get('/seed-all-tables', function() {
         	DB::table('services')->delete();
 		
         	$service1 = new Service;
+        	$service1-> salon()->associate($batman);
         	$service1-> kind()->associate($massage);
-        	$service1-> type = 'swedish';
-        	$service1-> duration()->associate($fifteen);
+        	$service1-> type()->associate($sport);
+        	$service1-> duration = '45';
         	$service1-> price = '40.50';
         	$service1-> part = '0';
         	$service1-> description = 'Lorem';
         	$service1->save();
-        	$service1->salon()->attach($batman);
+        	
         	
         	$service2 = new Service;
+        	$service2-> salon()->associate($superman);
         	$service2-> kind()->associate($massage);
-        	$service2-> type = 'swedish';
-        	$service2-> duration()->associate($thirty);
+        	$service2-> type()->associate($swedish);
+        	$service2-> duration = '45';
         	$service2-> price = '90.50';
         	$service2-> part = '1';
-        	$service2-> description = 'Lorem';
+        	$service2-> description = 'Lorem ipsum';
         	$service2->save();
-        	$service2->salon()->attach($spiderman); 
+        	
         	
 		$service3 = new Service;
+		$service3-> salon()->associate($spiderman);
         	$service3-> kind()->associate($sauna);
-        	$service3-> type = 'finnish';
-        	$service3-> duration()->associate($fourtyfive);
+        	$service3-> type()->associate($russian);
+        	$service3-> duration = '90';
         	$service3-> price = '100.50';
         	$service3-> part = '1';
         	$service3-> description = 'Ipsum';
         	$service3->save();
-        	$service3->salon()->attach($superman);
+        	
         	
         	$service4 = new Service;
+        	$service4-> salon()->associate($batman);
         	$service4-> kind()->associate($sauna);
-        	$service4-> type = 'turkish';
-        	$service4-> duration()->associate($fourtyfive);
-        	$service4-> price = '120.50';
+        	$service4-> type()->associate($finnish);
+        	$service4-> duration = '60';
+        	$service4-> price = '100.50';
         	$service4-> part = '1';
         	$service4-> description = 'Dolor';
         	$service4->save();
-        	$service4->salon()->attach($batman);
+        	
         	
         	$service5 = new Service;
-        	$service5-> kind()->associate($massage);
-        	$service5-> type = 'sport';
-        	$service5-> duration()->associate($fifteen);
-        	$service5-> price = '30.50';
+        	$service5-> salon()->associate($joker);
+        	$service5-> kind()->associate($sauna);
+        	$service5-> type()->associate($turkish);
+        	$service5-> duration = '90';
+        	$service5-> price = '60.50';
         	$service5-> part = '0';
         	$service5-> description = 'Amet';
         	$service5->save();
-        	$service5->salon()->attach($joker);
+        	
         	
         	$service6 = new Service;
+        	$service6-> salon()->associate($batman_ny);
         	$service6-> kind()->associate($massage);
-        	$service6-> type = 'sport';
-        	$service6-> duration()->associate($thirty);
-        	$service6-> price = '30.50';
+        	$service6-> type()->associate($sport);
+        	$service6-> duration = '90';
+        	$service6-> price = '55.50';
         	$service6-> part = '0';
         	$service6-> description = 'Amet';
         	$service6->save();
-        	$service6->salon()->attach($batman_ny);
         	
         	#Admin user
         	

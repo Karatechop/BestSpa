@@ -4,7 +4,7 @@ class Clean {
 	public function __construct() {
 		 # Clear the tables to a blank slate
 	    DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
-	    $this->tables = Array('salons', 'durations', 'kinds', 'services', 'salon_service', 'users', 'migrations');
+	    $this->tables = Array('salons', 'types', 'kinds', 'services', 'users', 'migrations');
 	    $this->truncate();
 	    $this->drop();
 	    Artisan::call('migrate');

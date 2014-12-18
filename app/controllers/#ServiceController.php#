@@ -48,7 +48,7 @@ class ServiceController extends BaseController
         $query  = Input::get('query');
         $service_results = Service::searchServiceResults($query);
         
-        return View::make('/adminpanel_services_search_results')
+        return View::make('adminpanel_services_search_results')
         ->with('service_results', $service_results)
         ->with('query', $query);
     }

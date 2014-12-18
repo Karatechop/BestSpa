@@ -2,13 +2,13 @@
 
 class Service extends Eloquent { 
 
-	protected $fillable = array('kind_id', 'duration_id', 'type', 'description','price');
+	protected $fillable = array('salon_id', 'kind_id', 'type_id', 'duration', 'description','price' ,'part');
 	
 	
 	public function salon() {
         # Service belongs to many Salon
         # Define a many-to-many relationship.
-        return $this->belongsToMany('Salon');
+        return $this->belongsTo('Salon');
     }
     
    	public function kind() {
@@ -17,15 +17,15 @@ class Service extends Eloquent {
     	return $this->belongsTo('Kind');
     }
     
-    	public function duration() {
+    	public function type() {
         # Service belongs to Duration
         # Define inverse one-to-many relationship.
-        return $this->belongsTo('Duration');
+        return $this->belongsTo('Type');
 }
 
     	public static function showAllservices() {
         # show all Services
-        $services = Service::with('salon','duration','kind')->get();
+        $services = Service::with('salon','type','kind')->get();
         return $services;
 				
 }
@@ -33,7 +33,7 @@ class Service extends Eloquent {
         # In case of query, search for services with that query
         if($query) {
             # Eager load services with salons, kinds and durations
-            $services = Service::with('salon','duration','kind')
+            $services = Service::with('salon','type','kind')
             ->whereHas('salon', function($q) use($query) {
                 $q->where('name', 'LIKE', "%$query%");
                 })
@@ -49,18 +49,21 @@ class Service extends Eloquent {
             ->orWhereHas('salon', function($q) use($query) {
                 $q->where('close_h', 'LIKE', "%$query%");
                 })
+            ->orWhereHas('salon', function($q) use($query) {
+                $q->where('url', 'LIKE', "%$query%");
+                })
            
             
             ->orWhereHas('kind', function($q) use($query) {
                 $q->where('name', 'LIKE', "%$query%");
             })
             
-             ->orWhereHas('duration', function($q) use($query) {
-                $q->where('duration', 'LIKE', "%$query%");
+             ->orWhereHas('type', function($q) use($query) {
+                $q->where('name', 'LIKE', "%$query%");
             })
              
            
-            ->orWhere('type', 'LIKE', "%$query%")
+            ->orWhere('duration', 'LIKE', "%$query%")
             ->orWhere('description', 'LIKE', "%$query%")
             ->get();
         }
@@ -68,7 +71,7 @@ class Service extends Eloquent {
         # Else show all services
         else {
             
-            $services = Service::with('salon','duration','kind')->get();
+            $services = Service::with('salon','type','kind')->get();
         }
         return $services;
     }

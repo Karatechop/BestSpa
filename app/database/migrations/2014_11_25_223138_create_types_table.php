@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDurationsTable extends Migration {
+class CreateTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateDurationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('durations', function($table) {
+		Schema::create('types', function($table) {
 
 			# AI, PK
 			$table->increments('id');
@@ -21,7 +21,7 @@ class CreateDurationsTable extends Migration {
 			$table->timestamps();
 
 			# General data...
-			$table->integer('duration');
+			$table->string('name', 20);
 			
 			# Define foreign keys...
 			# none needed
@@ -36,7 +36,7 @@ class CreateDurationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('durations');
+		Schema::drop('types');
 	}
 
 }

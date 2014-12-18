@@ -7,16 +7,7 @@
 @include ('adminpanel_services_navbar')
 
 
-@if(Session::get('flash_message'))
-       	
-        <div class="alert {{ Session::get('alert_class', 'alert-info') }}">
-       	{{ Session::get('flash_message') }}
-	</div>
-@endif
-
-@if (isset($service))
-{{print_r($service)}}
-@endif
+@include ('flash_message')
 
 <h2>Services</h2>
 
@@ -28,15 +19,11 @@
 {{ "<strong>".$value." services: </strong>" }} <br>
 @foreach ($services as $service)
 
-@foreach ($service->salon as $salon)
-
-@if ($salon->name == $value)
+@if ($service->salon->name == $value)
 
 @include ('services_table')<br><br>
 
 @endif
-
-@endforeach
 
 @endforeach
 

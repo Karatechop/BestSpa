@@ -79,17 +79,3 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
-
-
-/*
-|--------------------------------------------------------------------------
-| Catch missing routes
-|--------------------------------------------------------------------------
-|
-|
-*/
-/*
-App::missing(function($exception){
-		return View::make('notfound');
-		
-});    */

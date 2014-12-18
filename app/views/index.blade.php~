@@ -13,9 +13,8 @@
 @foreach ($services as $service)
 
 @foreach ($service->salon as $salon)
-{{$salon->name}} offers {{$service->type}} {{$service->kind->name}}. It will cost you ${{$service->price}} for {{$service->duration->duration}} minutes<br>
-You can find them at: {{$salon->address}}, {{$salon->city}}. They are open from {{$salon->open}} till {{$salon->close}}. Reserve your treatment at {{$salon->phone}} or visit their webpage: {{$salon->url}} <br>
-{{$service->description}}<br><br>
+@include ('services_table')
+<br><br>
 @endforeach
 
 @endforeach

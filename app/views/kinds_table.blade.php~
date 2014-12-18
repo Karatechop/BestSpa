@@ -1,3 +1,1 @@
-
-{{$salon->name}} is from {{$salon->city}} city. Their address is {{$salon->address}}. They are open from {{$salon->open_h}}:{{$salon->open_m}} till {{$salon->close_h}}:{{$salon->close_m}}. {{$salon->int_code}}{{$salon->coun_code}}{{$salon->net_code}}{{$salon->phone}} or visit their webpage: {{$salon->url}} <br>
-
+{{strtolower ($kind->name)}}	created at:{{$kind->created_at}}	updated at: {{$kind->updated_at}}<br>

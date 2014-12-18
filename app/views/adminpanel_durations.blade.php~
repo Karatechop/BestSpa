@@ -9,10 +9,14 @@
 
 <h2>Durations</h2>
 
+<a href="/adminpanel/durations/create" class="btn btn-primary">Add a new service duration</a>
+<br>
 
 {{ "<strong> All service durations: </strong>" }} <br>
 @foreach ($durations as $duration)
-{{$duration->duration}}	created at:{{$duration->created_at}}	updated at:{{$duration->updated_at}}<br>
+
+@include ('durations_table')
+
 @endforeach
 
 <br>

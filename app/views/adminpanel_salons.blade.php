@@ -6,12 +6,7 @@
 
 @include ('adminpanel_salons_navbar')
 
-@if(Session::get('flash_message'))
-       	
-        <div class="alert {{ Session::get('alert_class', 'alert-info') }}">
-       	{{ Session::get('flash_message') }}
-	</div>
-@endif
+@include ('flash_message')
 
 <h2>Salons</h2>
 

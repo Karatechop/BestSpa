@@ -15,7 +15,7 @@
     <li><a href="/adminpanel">Services</a></li>
     <li class="active"><a href="/adminpanel/salons">Salons</a></li>
     <li><a href="/adminpanel/kinds">Kinds</a></li>
-    <li><a href="/adminpanel/durations">Durations</a></li>
+    <li><a href="/adminpanel/types">Types</a></li>
     </ul>
     
     	{{ Form::open(array('class'=> 'navbar-form navbar-left', 'url' => '/adminpanel/salons/search', 'method' => 'GET')) }}

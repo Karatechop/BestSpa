@@ -9,39 +9,28 @@
 <div class="row">
         <div class="col-lg-6">
              
-        @if(Session::get('flash_message'))
-       	
-        <div class="alert {{ Session::get('alert_class', 'alert-info') }}">
-       	{{ Session::get('flash_message') }}
-	<br>
-	
-	@foreach($errors->all() as $message) 
-	<li>{{ $message }}</li>
-	
-	@endforeach
-	</div>
-	@endif
+@include ('flash_message')
         
             <div class="panel panel-primary">
             	<div class="panel-heading">
-            	   <h3 class="panel-title">Add a new service kind</h3>
+            	   <h3 class="panel-title">Edit this service kind</h3>
   </div>
   <div class="panel-body">
 
 
 {{Former::horizontal_open()
-  ->id('KindCreateForm')
-  ->url('adminpanel/kind/create')
+  ->id('KindEditForm')
+  ->url('adminpanel/kinds/edit/$kind->id')
   ->rules(array( 
   	  'name' => 'required|max:20',
   	  ))
   ->method('POST') 
 }}
 
+{{Former::populate($kind)}}
 
-{{Former::text('name',"Enter new service kind")
-  ->class('col-lg-12')
-  ->required(); 
+{{Former::text('name',"Edit service kind")
+  ->class('col-lg-12'); 
 }}
 
 <br>

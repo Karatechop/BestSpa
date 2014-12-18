@@ -47,4 +47,4 @@ class Kind extends Eloquent {
 		}
 		return $kinds;
 	}
-}
+} //end

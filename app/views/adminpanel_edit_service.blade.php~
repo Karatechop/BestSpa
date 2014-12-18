@@ -22,7 +22,7 @@
 
 {{Former::horizontal_open()
   ->id('ServiceEditForm')
-  ->url('adminpanel/services/edit/$service->id')
+  ->url('adminpanel/services/create')
   ->rules(array( 
   	  'kind_id' => 'required',
   	  'type_id' => 'required',

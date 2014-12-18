@@ -6,6 +6,7 @@
 
 @include ('adminpanel_durations_navbar')
 
+@include ('flash_message')
 
 <h2>Durations</h2>
 

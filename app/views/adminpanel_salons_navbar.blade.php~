@@ -18,7 +18,7 @@
     <li><a href="/adminpanel/durations">Durations</a></li>
     </ul>
     
-    	{{ Form::open(array('class'=> 'navbar-form navbar-left', 'url' => '/adminpanel/services/search', 'method' => 'GET')) }}
+    	{{ Form::open(array('class'=> 'navbar-form navbar-left', 'url' => '/adminpanel/salons/search', 'method' => 'GET')) }}
 		
 		{{ Form::text('query', 'Look for salons', array('class'=>'form-control col-lg-8')) }} 
 

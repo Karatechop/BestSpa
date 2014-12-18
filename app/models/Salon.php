@@ -11,7 +11,7 @@ class Salon extends Eloquent {
 	public function service() {
         # Salon belongd to many Service
         # Define a many-to-many relationship.
-        return $this->belongsToMany('Service');
+        return $this->hasMany('Service');
     }
     
         public static function showAllsalons() {

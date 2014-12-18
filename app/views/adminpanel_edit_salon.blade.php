@@ -9,18 +9,7 @@
 <div class="row">
         <div class="col-lg-6">
              
-        @if(Session::get('flash_message'))
-       	
-        <div class="alert {{ Session::get('alert_class', 'alert-info') }}">
-       	{{ Session::get('flash_message') }}
-	<br>
-	
-	@foreach($errors->all() as $message) 
-	<li>{{ $message }}</li>
-	
-	@endforeach
-	</div>
-	@endif
+@include ('flash_message')
         
             <div class="panel panel-primary">
             	<div class="panel-heading">
@@ -33,9 +22,9 @@
 
 {{Former::horizontal_open()
   ->id('SalonEditForm')
-  ->url('adminpanel/salons/edit')
+  ->url('adminpanel/salons/edit/$salon->id')
   ->rules(array( 
-  	  'name' => 'required|max:20',
+  	  'name' => 'required|unique:types,name|max:20',
   	  'city' => 'required|max:20',
   	  'address' => 'required|max:50',
   	  'open_h' => 'required|numeric|between:0,24',
@@ -46,7 +35,7 @@
   	  'coun_code' => 'required|between:0,9999',
   	  'net_code' => 'required|between:0,999',
   	  'phone' => 'required|max:9999999999',
-  	  'url' => 'url',
+  	  'url' => 'required|url',
   	  ))
   ->method('POST') 
 }}
