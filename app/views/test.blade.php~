@@ -1,0 +1,10 @@
+@extends('master')
+
+@section('content')
+
+<br>
+{{print_r($all		)}}
+<br>
+<br>
+
+@stop

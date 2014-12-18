@@ -21,13 +21,18 @@ class CreateSalonsTable extends Migration {
 			$table->timestamps();
 
 			# General data...
-			$table->string('name');
-			$table->string('city');
-			$table->string('address');
-			$table->time('open');
-			$table->time('close');
-			$table->bigInteger('phone');
-			$table->string('url');
+			$table->string('name', 20);
+			$table->string('city', 20);
+			$table->string('address', 50);
+			$table->integer('open_h');
+			$table->string('open_m', 2);
+			$table->integer('close_h');
+			$table->string('close_m', 2);
+			$table->string('int_code', 2);
+			$table->string('coun_code', 4);
+			$table->string('net_code', 3);
+			$table->string('phone', 10);
+			$table->string('url', 30);
 			
 			# Define foreign keys...
 			# none needed

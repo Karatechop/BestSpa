@@ -1,0 +1,26 @@
+@extends('master')
+
+@section('content')
+
+<h1>Admin panel</h1>
+
+@include ('adminpanel_salons_navbar')
+
+
+<h2>Salons</h2>
+
+@foreach ($salon_cities as $key=> $value)
+{{ "<strong>".$value." salons: </strong>" }} <br>
+@foreach ($salons as $salon)
+@if ($salon->city == $value)
+{{$salon->name}} is from {{$salon->city}} city. Their address is {{$salon->address}}. They open at {{$salon->open}}. They close at {{$salon->close}}. You can call them at {{$salon->phone}}. Their webpage is {{$salon->url}}<br>
+@endif
+@endforeach
+<br>
+@endforeach
+
+
+<br>
+<br>
+
+@stop

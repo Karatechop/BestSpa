@@ -1,11 +1,11 @@
 <?php
 
-class Sort extends Eloquent {
+class Kind extends Eloquent {
 	/**
-	* Identify relation between ServiceSort and Service
+	* Identify relation between Kind and Service
 	*/
 	public function service() {
-        # ServiceSort has many Service
+        # Kind has many Service
         # Define a one-to-many relationship.
         return $this->hasMany('Service');
     }

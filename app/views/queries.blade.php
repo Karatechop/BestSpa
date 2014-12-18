@@ -24,7 +24,7 @@
 <strong>Gotham city salon:</strong><br>
 
 @foreach ($salon_gotham as $salon)
-{{$salon->name}}
+{{$salon->name}} is from {{$salon->city}} city. Their address is {{$salon->address}}. They open at {{$salon->open}}. They close at {{$salon->close}}. You can call them at {{$salon->phone}}. Their webpage is {{$salon->url}}<br>
 @endforeach
 
 <br>

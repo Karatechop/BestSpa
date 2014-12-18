@@ -1,0 +1,21 @@
+@extends('master')
+
+@section('content')
+
+<h1>Admin panel</h1>
+
+@include ('adminpanel_durations_navbar')
+
+
+<h2>Durations</h2>
+
+
+{{ "<strong> All service durations: </strong>" }} <br>
+@foreach ($durations as $duration)
+{{$duration->duration}}	created at:{{$duration->created_at}}	updated at:{{$duration->updated_at}}<br>
+@endforeach
+
+<br>
+<br>
+
+@stop

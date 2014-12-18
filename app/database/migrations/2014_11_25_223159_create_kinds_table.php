@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSortsTable extends Migration {
+class CreateKindsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateSortsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sorts', function($table) {
+		Schema::create('kinds', function($table) {
 
 			# AI, PK
 			$table->increments('id');
@@ -21,7 +21,7 @@ class CreateSortsTable extends Migration {
 			$table->timestamps();
 
 			# General data...
-			$table->string('name');
+			$table->string('name', 20);
 			
 			# Define foreign keys...
 			# none needed
@@ -36,7 +36,7 @@ class CreateSortsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sorts');
+		Schema::drop('kinds');
 	}
 
 }

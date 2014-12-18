@@ -1,0 +1,27 @@
+<?php
+
+
+class DurationController extends BaseController
+{
+	
+	public function adminPanelDurations()
+    {
+    	   # Show durations search form and all durations to admin.
+    	   $durations = Duration::DurationsDescending()->get();
+    	   
+    	   return View::make('adminpanel_durations')->with('durations', $durations);
+    	}   					
+	
+	
+    	public function adminPanelSearchDurationResults()
+    {
+    	   {
+        # Show service durations search results to admin.
+        $query  = Input::get('query');
+        $duration_results = Duration::searchDurationResults($query);
+        
+        return View::make('/adminpanel_durations_search_results')->with('duration_results', $duration_results)
+        						->with('query', $query);
+	    }
+	}
+}

@@ -21,16 +21,16 @@ class CreateServicesTable extends Migration {
 			$table->timestamps();
 
 			# General data...
-			$table->integer('sort_id')->unsigned();
+			$table->integer('kind_id')->unsigned();
 			$table->string('type');
 			$table->integer('duration_id')->unsigned();
-			$table->decimal('price');
+			$table->decimal('price', 6, 2);
 			$table->boolean('part');
-			$table->string('description');
+			$table->text('description');
 			
 			
 			# Define foreign keys...
-			$table->foreign('sort_id')->references('id')->on('sorts');
+			$table->foreign('kind_id')->references('id')->on('kinds');
 			$table->foreign('duration_id')->references('id')->on('durations');
 			
 

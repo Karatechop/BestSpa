@@ -1,0 +1,30 @@
+@extends('master')
+
+@section('content')
+
+@include ('adminpanel_salons_navbar')
+
+<h1>Search results</h1>
+
+@if($query)
+		<h2>You searched for: {{{ $query }}}</h2>
+	@endif
+
+	@if(sizeof($salon_results) == 0)
+		No results
+	@else
+
+{{ "<strong> Your results: </strong>" }} <br>
+
+@foreach ($salon_results as $salon)
+
+{{$salon->name}} is from {{$salon->city}} city. Their address is {{$salon->address}}. They open at {{$salon->open}}. They close at {{$salon->close}}. You can call them at {{$salon->phone}}. Their webpage is {{$salon->url}}<br>
+
+@endforeach
+
+@endif
+
+<br>
+<br>
+
+@stop

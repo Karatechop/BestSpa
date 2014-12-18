@@ -1,0 +1,123 @@
+<?php
+
+
+class ServiceController extends BaseController
+{
+    public function index()
+    {
+        # Show services search form and list of services to anons.
+        $salons = Salon::showAllsalons();
+        $services = Service::showAllservices();
+        return View::make('/index')->with('salons', $salons)
+				    ->with('services', $services);
+    }
+
+    public function indexSearchResults()
+    {
+        # Show services search results to anons.
+        $query  = Input::get('query');
+        $service_results = Service::searchServiceResults($query);
+
+        return View::make('/index_services_search_results')->with('service_results', $service_results)
+   						->with('query', $query);
+    }
+    
+    public function adminPanelService()
+    {
+        # Show search form and all services by relevant salons to admin.
+        $salons = Salon::showAllsalons();
+        $services = Service::showAllservices();
+        $salon_cities = Salon::citiesSalons();
+        $salon_names = Salon::namesSalons();
+        
+        return View::make('adminpanel_services')->with('salons', $salons)
+				    ->with('services', $services)
+				    ->with('salon_cities', $salon_cities)
+				    ->with('salon_names', $salon_names);
+    }
+
+    public function adminPanelSearchServiceResults()
+    {
+        # Show services search results to admin.
+        $query  = Input::get('query');
+        $service_results = Service::searchServiceResults($query);
+        
+        return View::make('/adminpanel_services_search_results')->with('service_results', $service_results)
+        						->with('query', $query);
+    }
+     
+    public function getAdminPanelCreateService()
+    {
+    	   # Show the create new service form.
+    	   	$salons = Salon::getIdNamePair();
+		$kinds = Kind::getIdNamePair();
+		$durations = Duration::getIdNamePair();
+    	return View::make('adminpanel_create_service')
+    		->with('salons',$salons)
+    		->with('kinds',$kinds)
+    		->with('durations',$durations);
+    }
+    
+    
+    
+    public function postAdminPanelCreateService()
+    {
+        # Handle create new service form submission.
+        # Validation
+        
+        $rules = array(
+        	'price' => 'between:0,1000',
+        	'description' => 'max:300'   
+        	);          
+
+	$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()) {
+		
+		Session::put('alert_class', 'alert-danger');
+		
+		return Redirect::to('/adminpanel/services/create')
+		->with('flash_message', 'Could not add - please fix the errors listed below.')
+		->withInput()
+		->withErrors($validator);
+		};
+		
+	# Instantiate the service model
+		$all = Input::all();
+		$service = new Service;
+		
+		$service->fill(Input::except('salon'));
+		$service->save();
+		$salon = Input::get('salon');
+		
+			# This enters a new row in the salon_service table
+			$service->salon()->attach($salon);
+
+		Session::put('alert_class', 'alert-success');
+		
+		return Redirect::to('/adminpanel/services/create#top')
+    		->with('flash_message','New service has been added.');
+    }
+
+    public function edit(Service $service)
+    {
+        // Show the edit service form.
+        return View::make('edit');
+    }
+
+    public function handleEdit()
+    {
+        // Handle edit form submission.
+    }
+
+    public function delete()
+    {
+        // Show delete confirmation page.
+        return View::make('delete');
+    }
+
+    public function handleDelete()
+    {
+        // Handle the delete confirmation.
+    }
+}

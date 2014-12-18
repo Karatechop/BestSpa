@@ -1,0 +1,23 @@
+@extends('master')
+
+@section('content')
+
+<h1>Admin panel</h1>
+
+@include ('adminpanel_kinds_navbar')
+
+
+<h2>Kinds</h2>
+
+
+{{ "<strong> All service kinds: </strong>" }} <br>
+@foreach ($kinds as $kind)
+{{$kind->name}}	created at:{{$kind->created_at}}	updated at:{{$kind->updated_at}}<br>
+@endforeach
+
+
+
+<br>
+<br>
+
+@stop

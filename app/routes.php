@@ -11,6 +11,39 @@
 |
 */
 
+#Services
+Route::get('/', 'ServiceController@index');
+Route::get('/services/search', 'ServiceController@indexSearchResults');
+Route::get('/adminpanel', 'ServiceController@adminPanelService');
+Route::get('/adminpanel/services/search', 'ServiceController@adminPanelSearchServiceResults');
+Route::get('/adminpanel/services/create', 'ServiceController@getAdminPanelCreateService');
+Route::post('/adminpanel/services/create', 'ServiceController@postAdminPanelCreateService');
+Route::get('/adminpanel/services/edit/{id}', 'ServiceController@getAdminPanelEditService');
+Route::post('/adminpanel/services/edit/{id}', 'ServiceController@postAdminPanelEditService');
+
+#Salons
+Route::get('/adminpanel/salons', 'SalonController@adminPanelSalons');
+Route::get('/adminpanel/salons/search', 'SalonController@adminPanelSearchSalonResults');
+Route::get('/adminpanel/salons/create', 'SalonController@getAdminPanelCreateSalon');
+Route::post('/adminpanel/salons/create', 'SalonController@postAdminPanelCreateSalon');
+Route::get('/adminpanel/salons/edit/{id}', 'SalonController@getAdminPanelEditSalon');
+Route::post('/adminpanel/salons/edit/{id}', 'SalonController@postAdminPanelEditSalon');
+
+#Kinds
+Route::get('/adminpanel/kinds', 'KindController@adminPanelKinds');
+Route::get('/adminpanel/kinds/search', 'KindController@adminPanelSearchKindResults');
+Route::get('/adminpanel/kinds/create', 'KindController@getAdminPanelCreateKind');
+Route::post('/adminpanel/kinds/create', 'KindController@postAdminPanelCreateKind');
+
+#Durations
+Route::get('/adminpanel/durations', 'DurationController@adminPanelDurations');
+Route::get('/adminpanel/durations/search', 'DurationController@adminPanelSearchDurationResults');
+Route::get('/adminpanel/durations/create', 'DurationController@getAdminPanelCreateDuration');
+Route::post('/adminpanel/durations/create', 'DurationController@postAdminPanelCreateDuration');
+
+
+
+
 Route::get('/all-queries', function()
 {
 	$salons = Salon::all();
@@ -27,11 +60,9 @@ Route::get('/all-queries', function()
 	
 	$durations = Duration::all();
 	
-	$sorts = Sort::all();
+	$kinds = Kind::all();
 	
-	$services = Service::with('salon','duration','sort')->get(); 
-	//$service_salon = $service->salon->name;
-	//$service_duration = $service->duration;
+	$services = Service::with('salon','duration','kind')->get(); 
 	$service_massage = "massage";
 	$service_sauna = "sauna";
 	$service_city = "Metropolis";
@@ -40,10 +71,8 @@ Route::get('/all-queries', function()
 					->with('salon_gotham', $salon_gotham)
 					->with('salon_close', $salon_close)
 					->with('durations', $durations)
-					->with('sorts', $sorts)
+					->with('kinds', $kinds)
 					->with('services', $services)
-				//	->with('service_salon', $service_salon)
-				//	->with('service_duration', $service_duration)
 					->with('service_massage', $service_massage)
 					->with('service_sauna', $service_sauna)
 					->with('service_city', $service_city);
@@ -89,19 +118,44 @@ Route::get('/seed-all-tables', function() {
 			'name' => "Batman's Salon", 
         		'city' => "Gotham",
         		'address' => "Batman st. 1",
-        		'open' => "09:00:00",
-        		'close' => "22:00:00",
-        		'phone' => "123456789",
+        		'open_h' => "08",
+        		'open_m' => "00",
+        		'close_h' => "21",
+        		'close_m' => "30",
+        		'int_code' => "00",
+        		'coun_code' => "1",
+        		'net_code' => "070",
+        		'phone' => "5862542",
         		'url' => "www.batman.com")
+        		);
+        	
+        	$batman_ny  = Salon::create(array(
+			'name' => "Batman's Salon NY", 
+        		'city' => "New York",
+        		'address' => "5th Ave. 120",
+        		'open_h' => "08",
+        		'open_m' => "30",
+        		'close_h' => "21",
+        		'close_m' => "00",
+        		'int_code' => "00",
+        		'coun_code' => "1",
+        		'net_code' => "070",
+        		'phone' => "5632587",
+        		'url' => "www.batman.com/ny")
         		);
         	
         	$superman = Salon::create(array(
         		'name' => "Superman's Salon", 
         		'city' => "Metropolis",
         		'address' => "Superman st. 1",
-        		'open' => "10:00:00",
-        		'close' => "21:00:00",
-        		'phone' => "5123412345",
+        		'open_h' => "08",
+        		'open_m' => "00",
+        		'close_h' => "20",
+        		'close_m' => "00",
+        		'int_code' => "00",
+        		'coun_code' => "1",
+        		'net_code' => "070",
+        		'phone' => "9615486",
         		'url' => "www.superman.com")
         		);
         	
@@ -109,10 +163,30 @@ Route::get('/seed-all-tables', function() {
         		'name' => "Spiderman's Salon", 
         		'city' => "New York",
         		'address' => "Spiderman st. 1",
-        		'open' => "11:00:00",
-        		'close' => "20:00:00",
-        		'phone' => "2233456789",
+        		'open_h' => "07",
+        		'open_m' => "30",
+        		'close_h' => "22",
+        		'close_m' => "30",
+        		'int_code' => "00",
+        		'coun_code' => "1",
+        		'net_code' => "070",
+        		'phone' => "3261485",
         		'url' => "www.spiderman.com")
+        		);
+        	
+        	$joker  = Salon::create(array(
+			'name' => "Joker's Salon", 
+        		'city' => "Gotham",
+        		'address' => "Joker st. 1",
+        		'open_h' => "06",
+        		'open_m' => "00",
+        		'close_h' => "23",
+        		'close_m' => "00",
+        		'int_code' => "00",
+        		'coun_code' => "1",
+        		'net_code' => "070",
+        		'phone' => "6952145",
+        		'url' => "www.joker.com")
         		);
         	
         	
@@ -133,14 +207,14 @@ Route::get('/seed-all-tables', function() {
 		$fourtyfive->save();
         		
         	        	
-        	#Sorts
+        	#Kinds
         	
-        	DB::table('sorts')->delete();
+        	DB::table('kinds')->delete();
         	
-        	$massage = Sort::create(array(
+        	$massage = Kind::create(array(
         		'name' => "massage"));
         		
-        	$sauna = Sort::create(array(
+        	$sauna = Kind::create(array(
         		'name' => "sauna"));
         	
         	#Services
@@ -148,7 +222,7 @@ Route::get('/seed-all-tables', function() {
         	DB::table('services')->delete();
 		
         	$service1 = new Service;
-        	$service1-> sort()->associate($massage);
+        	$service1-> kind()->associate($massage);
         	$service1-> type = 'swedish';
         	$service1-> duration()->associate($fifteen);
         	$service1-> price = '40.50';
@@ -158,7 +232,7 @@ Route::get('/seed-all-tables', function() {
         	$service1->salon()->attach($batman);
         	
         	$service2 = new Service;
-        	$service2-> sort()->associate($massage);
+        	$service2-> kind()->associate($massage);
         	$service2-> type = 'swedish';
         	$service2-> duration()->associate($thirty);
         	$service2-> price = '90.50';
@@ -168,7 +242,7 @@ Route::get('/seed-all-tables', function() {
         	$service2->salon()->attach($spiderman); 
         	
 		$service3 = new Service;
-        	$service3-> sort()->associate($sauna);
+        	$service3-> kind()->associate($sauna);
         	$service3-> type = 'finnish';
         	$service3-> duration()->associate($fourtyfive);
         	$service3-> price = '100.50';
@@ -177,6 +251,44 @@ Route::get('/seed-all-tables', function() {
         	$service3->save();
         	$service3->salon()->attach($superman);
         	
+        	$service4 = new Service;
+        	$service4-> kind()->associate($sauna);
+        	$service4-> type = 'turkish';
+        	$service4-> duration()->associate($fourtyfive);
+        	$service4-> price = '120.50';
+        	$service4-> part = '1';
+        	$service4-> description = 'Dolor';
+        	$service4->save();
+        	$service4->salon()->attach($batman);
+        	
+        	$service5 = new Service;
+        	$service5-> kind()->associate($massage);
+        	$service5-> type = 'sport';
+        	$service5-> duration()->associate($fifteen);
+        	$service5-> price = '30.50';
+        	$service5-> part = '0';
+        	$service5-> description = 'Amet';
+        	$service5->save();
+        	$service5->salon()->attach($joker);
+        	
+        	$service6 = new Service;
+        	$service6-> kind()->associate($massage);
+        	$service6-> type = 'sport';
+        	$service6-> duration()->associate($thirty);
+        	$service6-> price = '30.50';
+        	$service6-> part = '0';
+        	$service6-> description = 'Amet';
+        	$service6->save();
+        	$service6->salon()->attach($batman_ny);
+        	
+        	#Admin user
+        	
+        	DB::table('users')->delete();
+        	
+        	$admin = new User;
+		$admin -> email    = 'admin@domain.com';
+		$admin -> password = Hash::make('password');
+		$admin -> save();
         	
         	return 'Done';
 

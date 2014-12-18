@@ -12,7 +12,29 @@ class CreateServicesTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('services', function($table) {
+
+			# AI, PK
+			$table->increments('id');
+
+			# created_at, updated_at columns
+			$table->timestamps();
+
+			# General data...
+			$table->integer('kind_id')->unsigned();
+			$table->string('type');
+			$table->integer('duration_id')->unsigned();
+			$table->decimal('price', 3, 2);
+			$table->boolean('part');
+			$table->string('description');
+			
+			
+			# Define foreign keys...
+			$table->foreign('kind_id')->references('id')->on('kinds');
+			$table->foreign('duration_id')->references('id')->on('durations');
+			
+
+		});
 	}
 
 	/**
@@ -22,7 +44,7 @@ class CreateServicesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('services');
 	}
 
 }
