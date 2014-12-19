@@ -20,7 +20,7 @@
     
     	{{ Form::open(array('class'=> 'navbar-form navbar-left', 'url' => '/adminpanel/kinds/search', 'method' => 'GET')) }}
 		
-		{{ Form::text('query', 'Look for service kinds', array('class'=>'form-control col-lg-8')) }} 
+		{{ Form::text('query', '', array('class'=>'form-control col-lg-8', 'placeholder'=>'Look for service kinds')) }}
 
 		{{ Form::submit('Search', array('class'=> 'form-control col-lg-8')); }} 
 	
