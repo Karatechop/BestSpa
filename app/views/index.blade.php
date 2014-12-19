@@ -4,7 +4,7 @@
 
 <br>
 <div class="jumbotron">
-  <h1>Welcome to Myspa</h1>
+  <h1 class="text-primary">Welcome to BestSpa</h1>
   <p>This is app helps you find and compare all spa treatments in your local area.</p>
 </div>
 

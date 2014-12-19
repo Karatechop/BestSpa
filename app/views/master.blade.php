@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Boris Rugel | Myspa</title>
+	<title>Boris Rugel | BestSpa</title>
 	
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		

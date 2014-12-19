@@ -4,8 +4,6 @@
 
 @include ('index_navbar')
 
-<h1>Search results</h1>
-
 @if($query)
 		<h2>You searched for: {{{ $query }}}</h2>
 	@endif
