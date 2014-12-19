@@ -19,8 +19,23 @@
 
 	<p>Are you sure you would like to delete this service kind?</p>
 	
-@include ('kinds_table')	
+<table id="dataTable" class="tablesorter table table-striped table-hover"> 
+<thead> 
+<tr>  
+    <th>Service type</th> 
+    <th>Created at</th>
+    <th>Deleted at</th>
+</tr> 
+</thead> 
+<tbody>
 	
+@include ('kinds_table')	
+
+</tbody>
+</table>
+
+<br>
+
 {{Form::open(array('url' => '/adminpanel/kinds/delete'.$kind->id, 'method' => 'DELETE'))}}
     {{Form::submit("Permanently delete this service kind", array('class' => 'btn btn-danger'))}}
 {{Form::close()}}

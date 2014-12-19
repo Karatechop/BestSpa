@@ -23,13 +23,21 @@
 		{{ Form::submit('Search', array('class'=> 'form-control col-lg-8')); }} 
 	
 	{{ Form::close() }}
-    <ul class="nav navbar-nav">
-    <li><a href="/adminpanel">Admin panel</a></li>
+   
+    @if(Auth::check())
+    <ul class="nav navbar-nav navbar-right">
+    <li><a href="/logout">Log out</a></li>
     </ul>
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/login">Admin log in</a></li>
+    <li><a href="/adminpanel">Admin panel</a></li>
     </ul>
+    
+    @else
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="/login">Admin log in</a></li>
+    @endif
+  
     
     
   </div>

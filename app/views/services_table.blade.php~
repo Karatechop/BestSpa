@@ -1,3 +1,8 @@
-{{ucwords($salon->name)}} offers {{strtolower ($service->type)}} {{strtolower ($service->kind->name)}}. It will cost you ${{$service->price}} for {{$service->duration->duration}} minutes<br>
-You can find them at: {{ucwords($salon->address)}}, {{ucwords($salon->city)}}. They are open from {{$salon->open_h}}:{{$salon->open_m}} till {{$salon->close_h}}:{{$salon->close_m}}. Reserve your treatment at {{$salon->int_code}}{{$salon->coun_code}}{{$salon->net_code}}{{$salon->phone}} or visit their webpage: {{strtolower ($salon->url)}} <br>
-{{$service->description}}
+<tr>
+ <td>{{strtolower ($service->kind->name)}}</td>
+ <td>{{strtolower ($service->type->name)}}</td> 
+ <td>{{$service->price}}</td>
+ <td>{{$service->duration}}</td>
+ <td>{{$service->description}}</td> 
+ 
+     

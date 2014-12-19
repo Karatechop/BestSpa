@@ -13,16 +13,31 @@
         
 	<div class="panel panel-danger">
 	<div class="panel-heading">
-		<h3 class="panel-title">Delete this service type</h3>
+		<h3 class="panel-title">Delete this type of service kind</h3>
 	</div>
 	<div class="panel-body">
 
-	<p>Are you sure you would like to delete this service type?</p>
+	<p>Are you sure you would like to delete this type of service kind?</p>
+
+<table id="dataTable" class="tablesorter table table-striped table-hover"> 
+<thead> 
+<tr>  
+    <th>Service type</th> 
+    <th>Created at</th>
+    <th>Deleted at</th>
+</tr> 
+</thead> 
+<tbody>
 	
 @include ('types_table')	
-	
+
+</tbody>
+</table>
+
+<br>
+
 {{Form::open(array('url' => '/adminpanel/types/delete'.$type->id, 'method' => 'DELETE'))}}
-    {{Form::submit("Permanently delete this service type", array('class' => 'btn btn-danger'))}}
+    {{Form::submit("Permanently delete this type of service kind ", array('class' => 'btn btn-danger'))}}
 {{Form::close()}}
 
 	

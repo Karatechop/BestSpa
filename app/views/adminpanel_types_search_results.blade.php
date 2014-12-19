@@ -2,21 +2,38 @@
 
 @section('content')
 
+<h1>Admin panel</h1>
+
 @include ('adminpanel_types_navbar')
 
 @include ('flash_message')
 
-<h1>Search results</h1>
 
 @if($query)
-		<h2>You searched for: {{{ $query }}}</h2>
+		<h2>You've searched for: {{{ $query }}}</h2>
 	@endif
 
 	@if(sizeof($type_results) == 0)
-		No results
+		No results<br><br>
 	@else
 
-{{ "<strong> Your results: </strong>" }} <br>
+<div class="panel panel-info">
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Search results</h3>
+  </div>
+
+<div class="panel-body"><table id="myTable" class="table table-striped table-hover"> 
+<thead class="info"> 
+<tr> 
+    <th>Type name</th> 
+    <th>Created at:</th> 
+    <th>Updated at:</th>
+    <th>Edit service kind type</th> 
+    <th>Delete service kind type</th> 
+</tr> 
+</thead> 
+<tbody>
 
 @foreach ($type_results as $type)
 
@@ -25,9 +42,14 @@
 
 @endforeach
 
+</tbody>
+</table>
+
+</div>
+</div>
+
 @endif
 
-<br>
-<br>
+
 
 @stop

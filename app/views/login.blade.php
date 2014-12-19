@@ -24,6 +24,8 @@
     {{ Form::password('password', array('class'=>'col-lg-8')) }}<br><br>
 
     {{ Form::submit('Submit', array('class'=> 'btn btn-primary btn-lg')) }}
+    
+    <a href="/" class="btn btn-default btn-lg">or Return Home</a>
 
 {{ Form::close() }}
 

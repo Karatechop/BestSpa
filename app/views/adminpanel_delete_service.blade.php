@@ -17,10 +17,27 @@
 	</div>
 	<div class="panel-body">
 
-	<p>Are you sure you would like to delete this service?</p>
+	<p>Are you sure you would like to delete this <strong>{{$service->salon->name}}</strong> service?</p>
+
+<table id="dataTable" class="tablesorter table table-striped table-hover"> 
+<thead> 
+<tr> 
+    <th>Service kind</th> 
+    <th>Service type</th> 
+    <th>Service price, $</th>
+    <th>Service duration, min</th>
+    <th>Salon</th>
+</tr> 
+</thead> 
+<tbody>
 	
 @include ('services_table')	
-	
+
+</tbody>
+</table>
+
+<br>
+
 {{Form::open(array('url' => '/adminpanel/services/delete'.$service->id, 'method' => 'DELETE'))}}
     {{Form::submit("Permanently delete this service", array('class' => 'btn btn-danger'))}}
 {{Form::close()}}

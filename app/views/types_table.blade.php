@@ -1,5 +1,5 @@
-{{strtolower ($type->name)}}	
-created at:{{$type->created_at}}	
-updated at: {{$type->updated_at}}
-<br>
+<tr> 
+    <td>{{strtolower ($type->name)}}</td> 
+    <td>{{$type->created_at}}</td> 
+    <td>{{$type->updated_at}}</td> 
 
