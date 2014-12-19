@@ -21,6 +21,7 @@
 @foreach ($salon_results as $salon)
 
 @include ('salons_table')
+@include ('salons_table_buttons')
 
 @endforeach
 

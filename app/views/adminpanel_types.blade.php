@@ -17,6 +17,7 @@
 @foreach ($types as $type)
 
 @include ('types_table')
+@include ('types_table_buttons')
 
 @endforeach
 

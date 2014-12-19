@@ -23,9 +23,12 @@
 		{{ Form::submit('Search', array('class'=> 'form-control col-lg-8')); }} 
 	
 	{{ Form::close() }}
+    <ul class="nav navbar-nav">
+    <li><a href="/adminpanel">Admin panel</a></li>
+    </ul>
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/adminpanel/login">Admin log in</a></li>
+      <li><a href="/login">Admin log in</a></li>
     </ul>
     
     

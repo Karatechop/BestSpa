@@ -4,6 +4,13 @@
 class SalonController extends BaseController
 {
 	
+public function __construct() {
+		
+		parent::__construct();
+		$this->beforeFilter('auth');
+	}
+
+	
 	public function adminPanelSalons()
     {
     	   # Show salons search form and all salons by city to admin.
@@ -218,7 +225,10 @@ class SalonController extends BaseController
 			Session::put('alert_class', 'alert-info');
 			return Redirect::to('/adminpanel/salons')->with('flash_message', 'Salon successfully deleted.');
 		}
+		
 		catch(Exception $e) {
+			
+			# In case of constraint violation display all related services that block deletion.
 			
 			Session::put('alert_class', 'alert-danger');
 			Session::flash('flash_message', 'Could not delete - integrity constraint violation. 

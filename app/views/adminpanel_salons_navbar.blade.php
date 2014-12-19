@@ -27,7 +27,7 @@
 	{{ Form::close() }}
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/adminpanel/logout">Log out</a></li>
+      <li><a href="/logout">Log out</a></li>
     </ul>
     
     

@@ -3,6 +3,13 @@
 
 class TypeController extends BaseController
 {
+
+public function __construct() {
+		
+		parent::__construct();
+		$this->beforeFilter('auth');
+	}
+	
 	
 	public function adminPanelTypes()
     {

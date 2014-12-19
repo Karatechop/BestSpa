@@ -53,6 +53,10 @@ Route::post('/adminpanel/types/edit/{id}', 'TypeController@postAdminPanelEditTyp
 Route::get('/adminpanel/types/delete/{id}', 'TypeController@getAdminPanelDeleteType');
 Route::delete('/adminpanel/types/delete{id}', 'TypeController@postAdminPanelDeleteType');
 
+#User
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/login', 'UserController@postLogin');
+Route::get('/logout', 'UserController@getLogout');
 
 
 Route::get('/all-queries', function()

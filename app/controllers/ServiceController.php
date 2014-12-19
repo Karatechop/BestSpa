@@ -3,6 +3,17 @@
 
 class ServiceController extends BaseController
 {
+
+
+public function __construct() {
+		
+		parent::__construct();
+		$this->beforeFilter('auth', array('except' => ['index','indexSearchResults']));
+	}
+
+
+
+
     public function index()
     {
         # Show services search form and list of services to anons.
@@ -48,7 +59,7 @@ class ServiceController extends BaseController
         $query  = Input::get('query');
         $service_results = Service::searchServiceResults($query);
         
-        return View::make('/adminpanel_services_search_results')
+        return View::make('adminpanel_services_search_results')
         ->with('service_results', $service_results)
         ->with('query', $query);
     }

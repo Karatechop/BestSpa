@@ -20,6 +20,7 @@
 @if ( ucwords($salon->city) == $value)
 
 @include ('salons_table')
+@include ('salons_table_buttons')
 
 @endif
 @endforeach

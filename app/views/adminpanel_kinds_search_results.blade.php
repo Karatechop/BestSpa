@@ -21,6 +21,7 @@
 @foreach ($kind_results as $kind)
 
 @include ('kinds_table')
+@include ('kinds_table_buttons')
 
 @endforeach
 

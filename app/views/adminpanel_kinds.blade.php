@@ -16,6 +16,7 @@
 {{ "<strong> All service kinds: </strong>" }} <br>
 @foreach ($kinds as $kind)
 @include ('kinds_table')
+@include ('kinds_table_buttons')
 @endforeach
 
 

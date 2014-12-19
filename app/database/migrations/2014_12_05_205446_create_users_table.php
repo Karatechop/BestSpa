@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration {
 			$table->timestamps();
 
 			# General data...
-			$table->string('email');
+			$table->string('email')->unique();
+			$table->string('remember_token',100); 
 			$table->string('password');
-			
 			
 			# Define foreign keys...
 			#None needed

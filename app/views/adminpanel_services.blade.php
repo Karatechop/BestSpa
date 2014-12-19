@@ -21,7 +21,9 @@
 
 @if ($service->salon->name == $value)
 
-@include ('services_table')<br><br>
+@include ('services_table')
+@include ('services_table_buttons')
+<br><br>
 
 @endif
 
