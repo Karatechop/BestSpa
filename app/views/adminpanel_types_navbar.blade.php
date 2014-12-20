@@ -25,7 +25,10 @@
 		{{ Form::submit('Search', array('class'=> 'form-control col-lg-8')); }} 
 	
 	{{ Form::close() }}
-    
+    <ul class="nav navbar-nav">
+      <a href="/adminpanel/types/create" class="btn btn-primary">Add a new type of service kind</a>
+    </ul>
+	
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/logout">Log out</a></li>
     </ul>

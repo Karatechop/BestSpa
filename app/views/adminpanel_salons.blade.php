@@ -8,13 +8,7 @@
 
 @include ('flash_message')
 
-<h2>Salons</h2>
-
-<a href="/adminpanel/salons/create" class="btn btn-primary">Add a new salon</a>
-<br>
-<br>
-
-<h3>List of all salons: </h3>
+<h3>List of all salons</h3>
 
 @foreach ($salon_cities as $key=> $value)
 

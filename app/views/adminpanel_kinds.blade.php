@@ -8,11 +8,6 @@
 
 @include ('flash_message')
 
-<h2>Kinds of service</h2>
-
-<a href="/adminpanel/kinds/create" class="btn btn-primary">Add a new service kind</a>
-<br>
-<br>
 
 <div class="panel panel-info">
   <div class="panel-heading">

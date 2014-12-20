@@ -9,11 +9,6 @@
 
 @include ('flash_message')
 
-<h2>Services</h2>
-
-<a href="/adminpanel/services/create" class="btn btn-primary">Add a new service</a>
-<br>
-<br>
 
 <h3>List of all services: </h3>
 
@@ -22,7 +17,7 @@
 <div class="panel panel-info">
 
   <div class="panel-heading">
-    <h3 class="panel-title">{{$value }} services:</h3>
+    <h3 class="panel-title">{{$value }} services</h3>
   </div>
 
 <div class="panel-body">

@@ -16,7 +16,7 @@
 <div class="panel panel-info">
 
   <div class="panel-heading">
-    <h3 class="panel-title">List of all available services:</h3>
+    <h3 class="panel-title">List of all available services</h3>
   </div>
 
 <div class="panel-body">

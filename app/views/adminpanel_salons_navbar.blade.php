@@ -25,6 +25,10 @@
 		{{ Form::submit('Search', array('class'=> 'form-control col-lg-8')); }} 
 	
 	{{ Form::close() }}
+	
+    <ul class="nav navbar-nav">
+      <li><a href="/adminpanel/salons/create" class="btn btn-primary">Add a new salon</a></li>
+    </ul>
     
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/logout">Log out</a></li>
