@@ -11,7 +11,7 @@ For those cases deletion of some database entry is not possible due to integrity
 that suggests which bloking databese entries have to be deleted first.
 
 ## Demo
-
+http://screencast.com/t/QYOw01uJ00
 
 ## Details for teaching team
 Admin panel log in:
@@ -25,5 +25,9 @@ Password: password
 * jQuery: http://jquery.com/
 * Tablesorter: http://tablesorter.com/docs/
 * Former - form creation helper PHP package: http://anahkiasen.github.io/former/
+
+## Misc
+* "Learn more" and "Help" buttons on index page navigation bar are not active yet. They are not relevant for P4.
+* Video presentation was a bit too short to show form validation. Forms are validated both on client side (html atributes validation) as well as on server side.
 
 
