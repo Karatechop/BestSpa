@@ -88,8 +88,8 @@ require app_path().'/filters.php';
 |
 |
 */
-/*
+
 App::missing(function($exception){
 		return View::make('notfound');
 		
-});    */
+});    
