@@ -53,7 +53,7 @@
 		<div class="well">
           
 			<ul class="list-unstyled">
-				<li class="pull-left">Other projects: <a href="http://p2.borisrugel.com">	P2</a> , <a href="http://p3.borisrugel.com">P4</a></li>
+				<li class="pull-left">Other projects: <a href="http://p2.borisrugel.com">	P2</a> , <a href="http://p3.borisrugel.com">P3</a></li>
 				<li class="pull-right">Developed by:  <a href="http://p1.borisrugel.com">Boris Rugel</a>  2014 &copy;</li>
              		</ul>
 		</div>
